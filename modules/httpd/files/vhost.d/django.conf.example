@@ -1,0 +1,25 @@
+<VirtualHost *:80>
+    ServerName easyrats.com
+    DocumentRoot /home/easyrats/static
+    # so wildcard DNS for any IP works (see xip.io or nip.io)
+    ServerAlias easyrats.com.*
+
+    # logs
+    ErrorLog /var/log/httpd/easyrats.com.error_log
+    CustomLog /var/log/httpd/easyrats.com.access_log vhost
+
+    # django
+    WSGIDaemonProcess easyrats.com processes=2 threads=25 display-name=%{GROUP}
+    WSGIProcessGroup  easyrats.com
+    WSGIScriptAlias / /home/easyrats/easyrats/wsgi.py
+
+    # make aliases for files and dirs that should not be handled by django
+    Alias /robots.txt  /home/easyrats/static/robots.txt
+    Alias /favicon.ico /home/easyrats/static/favicon.ico
+    Alias /static /home/easyrats/static
+
+    <Directory /home/easyrats/static>
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+

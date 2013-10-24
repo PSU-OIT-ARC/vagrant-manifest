@@ -1,0 +1,14 @@
+<VirtualHost *:80>
+    ServerName rethink.pdx.edu
+    # so wildcard DNS for any IP works (see xip.io or nip.io)
+    ServerAlias rethink.pdx.edu.*
+
+    DocumentRoot /home/rethink/htdocs
+    ErrorLog /var/log/httpd/rethink.pdx.edu.error_log
+    CustomLog /var/log/httpd/rethink.pdx.edu.access_log vhost
+
+    <Directory /vol/www/rethink/htdocs>
+        AllowOverride All
+    </Directory>
+</VirtualHost>
+
