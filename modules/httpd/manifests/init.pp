@@ -9,6 +9,7 @@ class httpd {
 
     package { 'httpd':
 		ensure => '2.2.15-29.el6.centos',
+        before => Service['httpd'],
 	}
 	package { 'httpd-tools':
 		ensure => '2.2.15-29.el6.centos',
@@ -41,7 +42,29 @@ class httpd {
 		seltype  => 'httpd_config_t',
 		seluser  => 'system_u',
 	}
-
+	
+	# Create modsecurity.d directory
+	#
+	file { '/etc/httpd/modsecurity.d':
+	  ensure   => 'directory',
+	  group    => '0',
+	  mode     => '755',
+	  owner    => '0',
+	  selrange => 's0',
+	  selrole  => 'object_r',
+	  seltype  => 'httpd_config_t',
+	  seluser  => 'system_u',
+	}
+        file { '/etc/httpd/modsecurity.d/modsecurity-old.d':
+	  ensure   => 'directory',
+	  group    => '0',
+	  mode     => '755',
+	  owner    => '0',
+	  selrange => 's0',
+	  selrole  => 'object_r',
+	  seltype  => 'httpd_config_t',
+	  seluser  => 'system_u',
+	}
 	#
 	# /etc/httpd/conf.d directory
 
@@ -168,12 +191,26 @@ class httpd {
 		seltype  => 'httpd_config_t',
 		seluser  => 'system_u',
 	}
-
+	file { '/etc/httpd/vhost.d/django.conf.example':
+	  ensure  => 'file',
+	  source => 'puppet:///modules/httpd/vhost.d/django.conf.example',
+	  group   => '501',
+	  mode    => '644',
+	  owner   => '501',
+	}
+	file { '/etc/httpd/vhost.d/normal.conf.example':
+	  ensure  => 'file',
+	  source => 'puppet:///modules/httpd/vhost.d/normal.conf.example',
+	  group   => '501',
+	  mode    => '644',
+	  owner   => '501',
+	}
 	#
 	# Start httpd service
 
 	service { 'httpd' :
 		ensure => running,
 		enable => true,
+    	subscribe => File['/etc/httpd/conf/httpd.conf'],
 	}
 }

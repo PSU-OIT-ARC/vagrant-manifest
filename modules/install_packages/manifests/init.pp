@@ -48,9 +48,11 @@ package { 'South':
 }
 package { 'abrt':
   ensure => '2.0.8-15.el6.centos',
+  before => Service['abrtd'],
 }
 package { 'abrt-addon-ccpp':
   ensure => '2.0.8-15.el6.centos',
+  before => Service['abrt-ccpp'],
 }
 package { 'abrt-addon-kerneloops':
   ensure => '2.0.8-15.el6.centos',
@@ -72,6 +74,7 @@ package { 'acl':
 }
 package { 'acpid':
   ensure => '1.0.10-2.1.el6',
+  before => Service['acpid'],
 }
 package { 'aic94xx-firmware':
   ensure => '30-2.el6',
@@ -99,6 +102,7 @@ package { 'apr-util-ldap':
 }
 package { 'at':
   ensure => '3.1.10-43.el6_2.1',
+  before => Service['atd'],
 }
 package { 'atk':
   ensure => '1.28.0-2.el6',
@@ -126,6 +130,7 @@ package { 'authconfig':
 }
 package { 'autofs':
   ensure => '5.0.5-74.el6_4',
+  before => Service['autofs'],
 }
 package { 'avahi-libs':
   ensure => '0.6.25-12.el6',
@@ -231,6 +236,7 @@ package { 'cpp':
 }
 package { 'cpuspeed':
   ensure => '1.5-20.el6_4',
+  before => Service['cpuspeed'],
 }
 package { 'cracklib':
   ensure => '2.8.16-4.el6',
@@ -288,6 +294,7 @@ package { 'db4-utils':
 }
 package { 'dbus':
   ensure => '1.2.24-7.el6_3',
+  before => Service['messagebus'],
 }
 package { 'dbus-glib':
   ensure => '0.86-6.el6',
@@ -1137,6 +1144,7 @@ package { 'ncurses-libs':
 }
 package { 'net-snmp':
   ensure => '5.5-44.el6_4.4',
+	before => Service['snmpd'],
 }
 package { 'net-snmp-libs':
   ensure => '5.5-44.el6_4.4',
@@ -1200,6 +1208,7 @@ package { 'nss_compat_ossl':
 }
 package { 'ntp':
   ensure => '4.2.4p8-3.el6.centos',
+  before => Service['ntpd'],
 }
 package { 'ntpdate':
   ensure => '4.2.4p8-3.el6.centos',
@@ -1218,6 +1227,7 @@ package { 'ogdi':
 }
 package { 'openldap':
   ensure => '2.4.23-32.el6_4.1',
+  before => Service['nslcd'],
 }
 package { 'openldap-clients':
   ensure => '2.4.23-32.el6_4.1',
@@ -1785,6 +1795,7 @@ package { 'sudo':
 }
 package { 'sysstat':
   ensure => '9.0.4-20.el6',
+  before => Service['sysstat'],
 }
 package { 'system-config-firewall-base':
   ensure => '1.2.27-5.el6',
@@ -1872,15 +1883,6 @@ package { 'util-linux-ng':
 }
 package { 'vconfig':
   ensure => '1.9-8.1.el6',
-}
-package { 'vim-common':
-  ensure => '7.2.411-1.8.el6',
-}
-package { 'vim-enhanced':
-  ensure => '7.2.411-1.8.el6',
-}
-package { 'vim-minimal':
-  ensure => '7.2.411-1.8.el6',
 }
 package { 'virt-what':
   ensure => '1.11-1.2.el6',
