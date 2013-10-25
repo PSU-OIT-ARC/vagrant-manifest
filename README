@@ -1,8 +1,0 @@
-#Provision a Centos 6.4 VM Vagrant box using Puppet
-
-#Purpose
-	##Using a vanilla centos 6.4 image, create a puppet manifest that mirrors the configuration of the web and DB servers at PSU.
-
-#Troubleshoot
-	##If you run into an error while executing VBoxManage, then you should restart VirtualBox as below:
-	$ sudo /Library/StartupItems/VirtualBox/VirtualBox restart
