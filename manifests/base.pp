@@ -22,5 +22,5 @@ include install_packages # This install_packages class install some general pack
 include apply_service # This apply_service is to start some general services
 include sendmail # To install and start sendmail service
 include mysql # This mysql class to install and start mysql service
-#include httpd # To install and start apache
+include httpd # To install and start apache
 include vim # To install vim and config it

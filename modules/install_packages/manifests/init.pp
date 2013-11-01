@@ -1166,12 +1166,15 @@ package { 'newt-python':
 }
 package { 'nfs-utils':
   ensure => '1.2.3-36.el6',
+  before => Service['rpcidmapd'],
 }
 package { 'nfs-utils-lib':
   ensure => '1.1.5-6.el6',
+  before => Service['nfslock'], 
 }
 package { 'nmap':
   ensure => '5.51-2.el6',
+  before => Service['rpcgssd'],
 }
 package { 'nose':
   ensure => '0.10.4',
@@ -1651,6 +1654,7 @@ package { 'rootfiles':
 }
 package { 'rpcbind':
   ensure => '0.2.0-11.el6',
+  before => Service['rpcbind'],
 }
 package { 'rpm':
   ensure => '4.8.0-32.el6',
@@ -1963,3 +1967,5 @@ package { 'zsh':
   ensure => '4.3.10-5.el6',
 }
 }
+
+

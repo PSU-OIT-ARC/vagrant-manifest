@@ -76,11 +76,11 @@ class apply_service {
     # }
     service { 'ip6tables':
         ensure => 'stopped',
-        enable => 'true',
+        enable => 'false',
     }
     service { 'iptables':
         ensure => 'stopped',
-        enable => 'true',
+        enable => 'false',
     }
     # service { 'irqbalance':
     #   ensure => 'running',
