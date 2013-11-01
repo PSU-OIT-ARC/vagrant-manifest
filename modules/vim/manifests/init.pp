@@ -18,7 +18,7 @@ class vim {
            mode   => '755',
            owner  => '501',
         }
-        file { '/home/vagrant/.vimrc':
+        file { '/etc/vimrc':
            ensure  => 'file',
            source => 'puppet:///modules/vim/.vimrc',
            group   => '501',

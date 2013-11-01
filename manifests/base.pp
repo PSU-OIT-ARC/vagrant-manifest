@@ -24,3 +24,4 @@ include sendmail # To install and start sendmail service
 include mysql # This mysql class to install and start mysql service
 include httpd # To install and start apache
 include vim # To install vim and config it
+include dns # To make dns run faster
