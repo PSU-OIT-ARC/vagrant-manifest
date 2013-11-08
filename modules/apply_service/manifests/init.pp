@@ -46,34 +46,14 @@ class apply_service {
         ensure => 'running',
         enable => 'true',
     }
-    # service { 'dataeng':
-    #   ensure => 'stopped',
-    #   enable => 'true',
-    # }
-    # service { 'denyhosts':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
-    # service { 'dsm_om_shrsvc':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
     service { 'dsm_sa_ipmi':
         ensure => 'stopped',
         enable => 'false',
     }
-    # service { 'haldaemon':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
     service { 'htcacheclean':
         ensure => 'stopped',
         enable => 'false',
     }
-    # service { 'instsvcdrv':
-    #   ensure => 'running',
-    #   enable => 'false',
-    # }
     service { 'ip6tables':
         ensure => 'stopped',
         enable => 'false',
@@ -82,14 +62,6 @@ class apply_service {
         ensure => 'stopped',
         enable => 'false',
     }
-    # service { 'irqbalance':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
-    # service { 'kdump':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
     service { 'lvm2-lvmetad':
         ensure => 'stopped',
         enable => 'false',
@@ -166,10 +138,6 @@ class apply_service {
         ensure => 'stopped',
         enable => 'false',
     }
-    # service { 'rhnsd':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
     service { 'rngd':
         ensure => 'stopped',
         enable => 'false',
@@ -226,8 +194,4 @@ class apply_service {
         ensure => 'running',
         enable => 'true',
     }
-    # service { 'weave':
-    #   ensure => 'running',
-    #   enable => 'true',
-    # }
 }

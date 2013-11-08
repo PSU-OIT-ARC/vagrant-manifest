@@ -13,7 +13,6 @@ class mysql {
     package { 'mysql-libs':
       ensure => '5.1.69-1.el6_4',
     }
-
 	package { "mysql-server":
 		ensure => installed,
 	}
