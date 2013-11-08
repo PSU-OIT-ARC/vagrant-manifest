@@ -1,0 +1,6 @@
+[elgis]
+name=Up-to-date builds of various GIS packages el5.
+baseurl=http://elgis.argeo.org/repos/6/elgis/$basearch
+enabled=0
+gpgcheck=1
+gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ELGIS

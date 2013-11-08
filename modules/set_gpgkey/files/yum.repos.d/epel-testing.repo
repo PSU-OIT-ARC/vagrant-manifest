@@ -1,0 +1,6 @@
+[epel-testing]
+name=Extra Packages for Enterprise Linux (Testing)
+baseurl=http://epel.osuosl.org/testing/6/$basearch/
+enabled=0
+gpgcheck=1
+gpgkey=http://epel.osuosl.org/RPM-GPG-KEY-EPEL-6
