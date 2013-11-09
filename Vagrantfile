@@ -77,10 +77,10 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # #               Managed by Puppet.\n"
   # # }
   #
-   config.vm.provision :puppet do |puppet|
-     puppet.manifests_path = "manifests"
-     puppet.manifest_file  = "base.pp"
-     puppet.module_path = "modules"
-  end
+#   config.vm.provision :puppet do |puppet|
+#     puppet.manifests_path = "manifests"
+#     puppet.manifest_file  = "base.pp"
+#     puppet.module_path = "modules"
+#  end
 
 end

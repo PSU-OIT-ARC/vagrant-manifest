@@ -1,6 +1,6 @@
 # ADD GPG-KEY AND YUM REPO
 #
-
+echo ADDING GPG-KEY AND YUMREPO ........................................
 cp /vagrant/modules/set_gpgkey/files/RPM-GPG-KEY-CentOS-5 /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-5
 cp /vagrant/modules/set_gpgkey/files/RPM-GPG-KEY-CentOS-6 /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-6
 cp /vagrant/modules/set_gpgkey/files/RPM-GPG-KEY-CentOS-Debug-6 /etc/pki/rpm-gpg/RPM-GPG-KEY-CentOS-Debug-6
@@ -44,14 +44,14 @@ cp /vagrant/modules/set_gpgkey/files/yum.repos.d/rpmforge.repo /etc/yum.repos.d/
 cp /vagrant/modules/set_gpgkey/files/yum.repos.d/varnish-2.1.repo /etc/yum.repos.d/varnish-2.1.repo
 cp /vagrant/modules/set_gpgkey/files/yum.repos.d/yum.spacewalkproject.org_latest-client_RHEL_6_.repo /etc/yum.repos.d/yum.spacewalkproject.org_latest-client_RHEL_6_.repo
 
-echo add gpgkeys done ------------------------
 # Update system
+echo UPDATING YUM ............................................................
 yum -y update
 
-echo update yum done -------------------------
+
 # INSTALL ESSENTIAL PACKAGES
 #
-
+echo INSTALLING ESSENTIAL PACKAGES ...........................................
 packages=(5720_QP_rNDC_1G_BASE_T_ven_0x14e4_dev_0x165f_subven_0x1028_subdev_0x1f5b-a00-1
 ConsoleKit-0.4.1-3.el6
 ConsoleKit-libs-0.4.1-3.el6
@@ -706,10 +706,10 @@ zsh-4.3.10-5.el6)
 for package in ${packages[@]};
 do
     yum install -y $package
-    echo $package
 done
 
 # START SERVICES ----------------------------------------------------
+echo STARTING SERVICES .............................................
 
 service abrt-oops stop
 service abrtd start
@@ -763,6 +763,7 @@ service udev-post start
 # INSTALL APACHE AND RUN IT --------------------------------------------
 #
 # install httpd packages
+echo START INSTALLING HTTPD ..............................................
 
 httpdPackages=(httpd-2.2.15-29.el6.centos httpd-tools-2.2.15-29.el6.centos)
 
@@ -797,12 +798,12 @@ service httpd status
 
 # INSTALL VIM ------------------------------------------------
 #
-
+echo INSTALLING VIM ..........................................
 vimPackages=(vim-common-7.2.411-1.8.el6 vim-enhanced-7.2.411-1.8.el6 vim-minimal-7.2.411-1.8.el6)
 
 for vimPackage in ${vimPackages[@]}; 
 do
-    echo $vimPackage
+    yum install -y $vimPackage
 done
 
 mkdir /root/vim
@@ -818,7 +819,7 @@ mkdir /home/vagrant/.vim/view
 
 # INSTALL MYSQL ------------------------------------------------
 #
-
+echo INSTALLING MYSQL ..........................................
 mysqlPackages=(mysql-5.1.69-1.el6_4 mysql-devel-5.1.69-1.el6_4 mysql-libs-5.1.69-1.el6_4 mysql-server-5.1.69-1.el6_4)
 
 for mysqlPackage in ${mysqlPackages[@]};
