@@ -763,6 +763,9 @@ service sshd start
 service sysstat start
 service udev-post start
 
+# make sure iptables are always off
+chkconfig iptables off
+chkconfig ip6tables off
 
 # INSTALL APACHE AND RUN IT --------------------------------------------
 #
@@ -799,6 +802,8 @@ cp /vagrant/modules/httpd/files/vhost.d/vagrant.conf /etc/httpd/vhost.d/vagrant.
 # Start httpd service
 service httpd restart
 service httpd status
+# make it start on boot
+chkconfig --levels 235 httpd on
 
 # INSTALL VIM ------------------------------------------------
 #
@@ -836,6 +841,8 @@ cp /vagrant/modules/mysql/files/my.conf /var/lib/mysql/my.conf
 
 # start mysqld service
 service mysqld start
+# make it start on boot
+chkconfig --level 2345 mysqld on
 
 # ------------------------------------------------------------
 
