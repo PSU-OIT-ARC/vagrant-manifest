@@ -815,16 +815,7 @@ do
     yum install -y $vimPackage
 done
 
-mkdir /root/vim
-cp /vagrant/modules/vim/files/.vimrc /home/vagrant/
-mkdir /home/vagrant/.vim
-mkdir /home/vagrant/.vim/backup
-mkdir /home/vagrant/.vim/colors
-cp /vagrant/modules/vim/files/.vim/colors/wombat256mod.vim /home/vagrant/.vim/colors/
-cp /vagrant/modules/vim/files/.vim/colors/zenburn.vim /home/vagrant/.vim/colors/
-mkdir /home/vagrant/.vim/tmp
-mkdir /home/vagrant/.vim/undo
-mkdir /home/vagrant/.vim/view
+cp /vagrant/modules/vim/files/.* /root
 
 # INSTALL MYSQL ------------------------------------------------
 #
