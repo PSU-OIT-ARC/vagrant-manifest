@@ -815,7 +815,7 @@ do
     yum install -y $vimPackage
 done
 
-cp /vagrant/modules/vim/files/.* /root
+cp -r /vagrant/modules/vim/files/.* /root
 
 # INSTALL MYSQL ------------------------------------------------
 #
