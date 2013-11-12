@@ -1,3 +1,7 @@
+# Copy dns files over
+cp /vagrant/modules/dns/files/resolv.conf /etc/resolv.conf
+cp /vagrant/modules/dns/files/sysctl.conf /etc/sysctl.conf
+
 # ADD GPG-KEY AND YUM REPO
 #
 echo ADDING GPG-KEY AND YUMREPO ........................................
@@ -836,9 +840,6 @@ service mysqld start
 # ------------------------------------------------------------
 
 # MISCELLANEOUS STUFF ----------------------------------------
-# Copy dns files over
-cp /vagrant/modules/dns/files/resolv.conf /etc/resolv.conf
-cp /vagrant/modules/dns/files/sysctl.conf /etc/sysctl.conf
 
 # Using shell to set timezone in Vagrant
 ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
