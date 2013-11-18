@@ -1,21 +1,24 @@
-#Provision a Centos 6.4 VM Vagrant box using Puppet
+# Provision a Centos 6.4 VM Vagrant box using Bash
 
-##Purpose
-Using a vanilla centos 6.4 image, create a puppet manifest that mirrors the configuration of the web and DB servers at PSU.
-##Install
-Install Vagrant and Virtual Box (this should be available on ARC computers)
-Create local directory such as "centos64-puppet" and clone essentail files
-<pre><code>mkdir centos64-puppet
-cd centos64-puppet/
-git clone https://github.com/suns3t/puppet-manifest.git
-</code></pre>
-Run Vagrant and start provisioning (this step will take about one hour)
-<pre><code>vagrant up --provision
-</code></pre>
-##Troubleshoot
+## Install
+
+Install Vagrant (1.3.5) and Virtual Box (4.2.12). Clone this repo into a
+directory and run vagrant up:
+
+    git clone http://github.com/PSU-OIT-ARC/vagrant-manifest.git centos64
+    cd centos64
+    vagrant up
+
+The first time this is executed, a centos 6.4 image will be downloaded from a
+third party. Vagrant should then execute the bootstrap.sh provisioning script.
+
+If your box is not provisioned automatically, you can run:
+
+    vagrant provision
+
+## Troubleshoot
 If you run into the error of executing 'VBoxManage' when start up Vagrant box, run the command below to restart VBoxManager
-<pre><code>sudo /Library/StartupItems/VirtualBox/VirtualBox restart
-</code></pre>
-##Contact
-Contact information will go here!
+
+    sudo /Library/StartupItems/VirtualBox/VirtualBox restart
+
 
