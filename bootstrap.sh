@@ -475,3 +475,11 @@ date
 
 # Bash alias vi=vim
 echo "alias vi=vim" >> ~/.bashrc
+
+# install git from source
+yum install curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc
+wget https://www.kernel.org/pub/software/scm/git/git-1.8.3.4.tar.gz
+tar xzvf git-1.8.3.4.tar.gz
+cd git-1.8.3.4
+make prefix=/usr/local all
+make prefix=/usr/local install
