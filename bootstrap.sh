@@ -306,6 +306,7 @@ php-mysql
 php-pdo
 php-pgsql
 php-xml
+php53-ldap
 pinfo
 pixman
 pm-utils
