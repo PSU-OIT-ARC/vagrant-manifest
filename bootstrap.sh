@@ -476,6 +476,8 @@ date
 
 # Bash alias vi=vim
 echo "alias vi=vim" >> ~/.bashrc
+# ldap search base
+echo "base dc=pdx,dc=edu" >> /etc/ldap.conf
 
 # install git from source
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel gcc
