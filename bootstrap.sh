@@ -458,7 +458,7 @@ mysqlPackages=(mysql mysql-devel mysql-libs mysql-server)
 yum install -y ${mysqlPackages[@]}
 
 mkdir /var/lib/mysql
-cp /vagrant/modules/mysql/files/my.conf /var/lib/mysql/my.conf
+cp /vagrant/modules/mysql/files/my.conf /etc/my.cnf
 
 # start mysqld service
 service mysqld start
