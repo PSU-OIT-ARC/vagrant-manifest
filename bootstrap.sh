@@ -214,9 +214,6 @@ sed -i 's#logfile ""#logfile /var/log/redis.log#' /opt/redis/redis.conf
 sed -i 's#dir ./#dir /opt/redis/#' /opt/redis/redis.conf
 start redis-server
 
-# no one in their right mind wants to use the old vi
-echo "alias vi=vim" >> ~/.bashrc
-
 # make the blue lighter
 sed -i "s/DIR 01;34/DIR 01;94/" /etc/DIR_COLORS
 
@@ -238,4 +235,7 @@ cd vim74
 ./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
 make && make install
 
+# no one in their right mind wants to use the old vi
+echo "alias vi=vim" >> ~/.bashrc
+echo "EDITOR=vim" >> ~/.bashrc
 git config --global core.editor vim
