@@ -237,3 +237,5 @@ tar -xjf vim-7.4.tar.bz2
 cd vim74
 ./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
 make && make install
+
+git config --global core.editor vim
