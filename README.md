@@ -17,7 +17,7 @@
 
 ## Install
 
-Install Vagrant (1.3.5) and Virtual Box (4.2.12). Clone this repo into a
+Install Vagrant (1.6.5) and Virtual Box (4.2.12). Clone this repo into a
 directory and run vagrant up:
 
     git clone http://github.com/PSU-OIT-ARC/vagrant-manifest.git centos65
