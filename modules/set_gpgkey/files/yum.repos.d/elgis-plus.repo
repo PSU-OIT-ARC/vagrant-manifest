@@ -1,6 +1,0 @@
-[elgis-plus]
-name=Up-to-date builds of core packages required by some elGIS packages.
-baseurl=http://elgis.argeo.org/repos/6/elgis-plus/$basearch
-enabled=0
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-ELGIS

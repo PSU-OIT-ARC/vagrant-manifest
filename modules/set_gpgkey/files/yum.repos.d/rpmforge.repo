@@ -1,6 +1,0 @@
-[rpmforge]
-name=Local mirror of rpmforge
-baseurl=http://updates.oit.pdx.edu/redhat/rhel5s-$basearch/RPMS.rpmforge/
-enabled=0
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-rpmforge-dag

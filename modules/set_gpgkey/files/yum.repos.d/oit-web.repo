@@ -1,6 +1,0 @@
-[oit-web]
-name=Local php builds
-baseurl=http://updates.oit.pdx.edu/redhat/rhel5s-$basearch/RPMS.web/
-enabled=0
-gpgcheck=1
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-pdxbuild

@@ -1,6 +1,0 @@
-
-[yum.spacewalkproject.org_latest-client_RHEL_6_]
-name=added from: http://yum.spacewalkproject.org/latest-client/RHEL/6//
-baseurl=http://yum.spacewalkproject.org/latest-client/RHEL/6//$basearch
-enabled=1
-

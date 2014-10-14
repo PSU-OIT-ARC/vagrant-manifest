@@ -1,7 +1,0 @@
-[CentOS-Updates]
-name=CentOS - Updates
-baseurl=http://centos.osuosl.org/$releasever/updates/$basearch/
-enabled=0
-gpgcheck=1
-gpgkey=http://centos.osuosl.org/RPM-GPG-KEY-CentOS-$releasever
-priority=1
