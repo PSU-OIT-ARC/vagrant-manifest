@@ -1,5 +1,20 @@
 # Provision a Centos 6.5 VM Vagrant box using Bash
 
+## Batteries Included
+
+* MySQL 5.5 (username: root, no password)
+* Postgres 9.3 with PostGIS 2.1 (username: root, password: vagrant)
+* RabbitMQ 3.1
+* Elasticsearch 1.2
+* Redis 2.8
+* Apache 2.2
+* Python 2.6 and Python3.3
+* mod_wsgi for Python3.3
+* git 1.8
+* ImageMagick
+* Image libs for Python pillow
+* Vim 7.4 with nice default configuration
+
 ## Install
 
 Install Vagrant (1.3.5) and Virtual Box (4.2.12). Clone this repo into a

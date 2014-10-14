@@ -160,7 +160,7 @@ gpgkey=http://packages.elasticsearch.org/GPG-KEY-elasticsearch
 enabled=1
 EOF
 
-yum install -y java-1.6.0-openjdk
+yum install -y java-1.7.0-openjdk
 yum install -y elasticsearch
 service elasticsearch start
 chkconfig --add elasticsearch
@@ -212,7 +212,7 @@ sed -i "s/# bind 127.0.0.1/bind 127.0.0.1/" /opt/redis/redis.conf
 sed -i "s/timeout 0/timeout 300/" /opt/redis/redis.conf
 sed -i 's#logfile ""#logfile /var/log/redis.log#' /opt/redis/redis.conf
 sed -i 's#dir ./#dir /opt/redis/#' /opt/redis/redis.conf
-restart redis-server
+start redis-server
 
 # no one in their right mind wants to use the old vi
 echo "alias vi=vim" >> ~/.bashrc
@@ -228,3 +228,12 @@ cp -r /vagrant/.vim* ~
 service httpd restart
 service mysqld restart
 
+# install vim 7.4
+yum -y --skip-broken groupinstall 'Development tools'
+yum -y install ncurses ncurses-devel
+cd /usr/local/src
+wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
+tar -xjf vim-7.4.tar.bz2
+cd vim74
+./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
+make && make install
