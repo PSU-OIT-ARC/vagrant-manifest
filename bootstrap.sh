@@ -237,5 +237,5 @@ make && make install
 
 # no one in their right mind wants to use the old vi
 echo "alias vi=vim" >> ~/.bashrc
-echo "EDITOR=vim" >> ~/.bashrc
+echo "export EDITOR=vim" >> ~/.bashrc
 git config --global core.editor vim
