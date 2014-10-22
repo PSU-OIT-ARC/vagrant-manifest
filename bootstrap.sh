@@ -1,5 +1,7 @@
 # this makes DNS lookups fast
 echo "options single-request-reopen" >> /etc/resolv.conf
+# lets us type hostnames like hera which expands to hera.rc.pdx.edu
+echo "search cic.pdx.edu research.pdx.edu rc.pdx.edu oit.pdx.edu pdx.edu" >> /etc/resolv.conf
 
 # epel
 wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
