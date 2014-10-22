@@ -139,6 +139,10 @@ sed -i 's/\[mysqld\]/[mysqld]\ncharacter-set-server=utf8\ncollation-server=utf8_
 service mysqld start
 chkconfig --level 2345 mysqld on
 
+# allow root to login from private IP space
+mysql -e "GRANT ALL ON *.* TO root@'10.%' IDENTIFIED BY '' WITH GRANT OPTION;"
+mysql -e "GRANT ALL ON *.* TO root@'192.168.%' IDENTIFIED BY '' WITH GRANT OPTION;"
+
 # prepare for postgres
 sed -i -E 's#(\[(base|updates)\])#\1\nexclude=postgresql*#g'  /etc/yum.repos.d/CentOS-Base.repo
 yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
