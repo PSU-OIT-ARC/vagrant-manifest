@@ -113,6 +113,10 @@ EOF
 
 # install PHP
 yum install -y php php-bcmath php-cli php-common php-gd php-intl php-ldap php-mbstring php-mcrypt php-mysql php-pdo php-pgsql php-xml
+# pear + drush
+yum install -y php-pear
+pear channel-discover pear.drush.org
+pear install drush/drush
 
 # install the IUS repo which has a bunch of updated packages in it
 wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-13.ius.el6.noarch.rpm
