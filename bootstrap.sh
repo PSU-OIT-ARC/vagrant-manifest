@@ -262,5 +262,5 @@ echo '/^.*$/ root' > /etc/postfix/canonical-redirect
 echo "canonical_maps = regexp:/etc/postfix/canonical-redirect" > /etc/postfix/main.cf
 service postfix restart
 # much better mail client
-yum install -y mutt
-echo "alias mail=mutt" >> ~/.bashrc
+yum install -y alpine
+echo "alias mail=alpine" >> ~/.bashrc
