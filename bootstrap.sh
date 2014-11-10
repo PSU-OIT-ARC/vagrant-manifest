@@ -255,3 +255,12 @@ make && make install
 echo "alias vi=vim" >> ~/.bashrc
 echo "export EDITOR=vim" >> ~/.bashrc
 git config --global core.editor vim
+
+# redirect all mail to root
+# http://www.euperia.com/development/how-to-configure-postfix-to-deliver-all-mail-to-one-mailbox/1132
+echo '/^.*$/ root' > /etc/postfix/canonical-redirect
+echo "canonical_maps = regexp:/etc/postfix/canonical-redirect" > /etc/postfix/main.cf
+service postfix restart
+# much better mail client
+yum install -y mutt
+echo "alias mail=mutt" >> ~/.bashrc
