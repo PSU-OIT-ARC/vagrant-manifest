@@ -150,7 +150,7 @@ yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-cent
 yum install -y postgresql93 postgresql93-server postgresql93-libs postgresql93-contrib postgresql93-devel postgis2_93
 service postgresql-9.3 initdb
 service postgresql-9.3 start
-chkconfig postgresql-9.3
+chkconfig postgresql-9.3 on
 # create a root user 
 su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
