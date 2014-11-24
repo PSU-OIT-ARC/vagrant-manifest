@@ -158,8 +158,21 @@ cat "host    all             all             all            md5" >> /var/lib/pgs
 
 # git
 yum remove -y git
-yum install -y git18
-git config --global push.default simple
+yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+wget https://www.kernel.org/pub/software/scm/git/git-2.1.3.tar.gz
+tar -zxf git-2.1.3.tar.gz
+cd git-2.1.3
+make configure
+./configure --prefix=/usr
+make all
+make install
+cd ..
+rm -rf git-2.1.3.*
+
+wget https://www.kernel.org/pub/software/scm/git/git-manpages-2.1.3.tar.gz
+tar -zxf git-manpages-2.1.3.tar.gz -C /usr/local/share/man
+rm -f git-manpages-2.1.3.tar.gz
+
 
 # mod_wsgi
 yum install -y python33 python33-mod_wsgi
