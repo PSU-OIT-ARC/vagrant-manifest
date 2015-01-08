@@ -163,16 +163,18 @@ cat "host    all             all             all            md5" >> /var/lib/pgs
 # git
 yum remove -y git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-2.1.3.tar.gz
 tar -zxf git-2.1.3.tar.gz
 cd git-2.1.3
 make configure
-./configure --prefix=/usr
+./configure --prefix=/usr/local
 make all
 make install
 cd ..
 rm -rf git-2.1.3.*
 
+cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-manpages-2.1.3.tar.gz
 tar -zxf git-manpages-2.1.3.tar.gz -C /usr/local/share/man
 rm -f git-manpages-2.1.3.tar.gz
@@ -265,7 +267,7 @@ cd /usr/local/src
 wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 tar -xjf vim-7.4.tar.bz2
 cd vim74
-./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
+./configure --prefix=/usr/local --with-features=huge --enable-rubyinterp --enable-pythoninterp
 make && make install
 
 # no one in their right mind wants to use the old vi
