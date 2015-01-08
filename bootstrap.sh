@@ -14,6 +14,7 @@ yum install -y vim wget nc curl emacs words mlocate dos2unix
 # epel
 wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -Uvh epel-release-6*.rpm
+rm -f epel-release-6*.rpm
 
 # set the hostname to some random list of words
 hostname=`shuf -n 2 /usr/share/dict/words | tr '\n' '.' | tr '[:upper:]' '[:lower:]' | tr -cd "[.a-z]" | sed "s/\.$//"`
@@ -121,6 +122,7 @@ pear install drush/drush
 # install the IUS repo which has a bunch of updated packages in it
 wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-13.ius.el6.noarch.rpm
 rpm -Uvh ius-release*.rpm
+rm -f ius-release*.rpm
 
 # the mysql-libs were downloaded for another package, so we need to remove them without removing dependencies
 rpm -e --nodeps mysql-libs
@@ -151,24 +153,25 @@ yum install -y postgresql93 postgresql93-server postgresql93-libs postgresql93-c
 service postgresql-9.3 initdb
 service postgresql-9.3 start
 chkconfig postgresql-9.3 on
-# create a root user 
+# create a root user
 su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
 cat "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
 
 # git
-yum remove -y git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
+cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-2.1.3.tar.gz
 tar -zxf git-2.1.3.tar.gz
 cd git-2.1.3
 make configure
-./configure --prefix=/usr
+./configure --prefix=/usr/local
 make all
 make install
 cd ..
 rm -rf git-2.1.3.*
 
+cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-manpages-2.1.3.tar.gz
 tar -zxf git-manpages-2.1.3.tar.gz -C /usr/local/share/man
 rm -f git-manpages-2.1.3.tar.gz
@@ -261,7 +264,7 @@ cd /usr/local/src
 wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
 tar -xjf vim-7.4.tar.bz2
 cd vim74
-./configure --prefix=/usr --with-features=huge --enable-rubyinterp --enable-pythoninterp
+./configure --prefix=/usr/local --with-features=huge --enable-rubyinterp --enable-pythoninterp
 make && make install
 
 # no one in their right mind wants to use the old vi
@@ -277,3 +280,9 @@ service postfix restart
 # much better mail client
 yum install -y alpine
 echo "alias mail=alpine" >> ~/.bashrc
+
+# Lets make the vagrant user have the same dotfiles as root
+cp ~/.gitconfig /home/vagrant/.gitconfig
+cp ~/.bashrc /home/vagrant/.bashrc
+cp -r /vagrant/.vim* /home/vagrant
+
