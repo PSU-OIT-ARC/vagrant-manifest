@@ -155,7 +155,7 @@ yum install -y postgresql93 postgresql93-server postgresql93-libs postgresql93-c
 service postgresql-9.3 initdb
 service postgresql-9.3 start
 chkconfig postgresql-9.3 on
-# create a root user 
+# create a root user
 su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
 cat "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
