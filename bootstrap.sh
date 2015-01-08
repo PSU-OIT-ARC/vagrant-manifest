@@ -12,6 +12,8 @@ yum -y update
 yum install -y vim wget nc curl emacs words mlocate dos2unix
 
 # epel
+mkdir -p /usr/local/rpm
+cd /usr/local/rpm
 wget http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 rpm -Uvh epel-release-6*.rpm
 
@@ -119,6 +121,8 @@ pear channel-discover pear.drush.org
 pear install drush/drush
 
 # install the IUS repo which has a bunch of updated packages in it
+mkdir -p /usr/local/rpm
+cd /usr/local/rpm
 wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-13.ius.el6.noarch.rpm
 rpm -Uvh ius-release*.rpm
 
