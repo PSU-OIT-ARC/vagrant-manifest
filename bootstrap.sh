@@ -161,7 +161,6 @@ su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" po
 cat "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
 
 # git
-yum remove -y git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
 cd /usr/local/src
 wget https://www.kernel.org/pub/software/scm/git/git-2.1.3.tar.gz
