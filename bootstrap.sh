@@ -282,3 +282,9 @@ service postfix restart
 # much better mail client
 yum install -y alpine
 echo "alias mail=alpine" >> ~/.bashrc
+
+# Lets make the vagrant user have the same dotfiles as root
+cp ~/.gitconfig /home/vagrant/.gitconfig
+cp ~/.bashrc /home/vagrant/.bashrc
+cp -r /vagrant/.vim* /home/vagrant
+
