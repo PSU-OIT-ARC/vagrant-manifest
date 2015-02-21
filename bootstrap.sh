@@ -285,4 +285,5 @@ echo "alias mail=alpine" >> ~/.bashrc
 cp ~/.gitconfig /home/vagrant/.gitconfig
 cp ~/.bashrc /home/vagrant/.bashrc
 cp -r /vagrant/.vim* /home/vagrant
+chown -R vagrant:vagrant /home/vagrant/.vim
 
