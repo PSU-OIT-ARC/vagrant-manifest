@@ -136,6 +136,9 @@ sed -i "s/#innodb-buffer-pool-size/innodb-buffer-pool-size/" /etc/my.cnf
 sed -i "s/query-cache-size .*/query-cache-size = 0/" /etc/my.cnf
 # set the charset to something reasonable
 sed -i 's/\[mysqld\]/[mysqld]\ncharacter-set-server=utf8\ncollation-server=utf8_unicode_ci/' /etc/my.cnf
+# the timeouts are a problem when you're importing a large mysqldump
+sed -i 's/interactive-timeout.*//' /etc/my.cnf
+sed -i 's/wait-timeout.*//' /etc/my.cnf
 
 # start mysql on boot
 service mysqld start
