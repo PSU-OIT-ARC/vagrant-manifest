@@ -113,9 +113,9 @@ cat > /etc/httpd/vhost.d/django.conf.example <<EOF
 EOF
 
 # install PHP
-yum install -y php php-bcmath php-cli php-common php-gd php-intl php-ldap php-mbstring php-mcrypt php-mysql php-pdo php-pgsql php-xml
+yum install -y php55u php55u-bcmath php55u-cli php55u-common php55u-gd php55u-intl php55u-ldap php55u-mbstring php55u-mcrypt php55u-mysql php55u-pdo php55u-pgsql php55u-xml
 # pear + drush
-yum install -y php-pear
+yum install -y php55u-pear
 pear channel-discover pear.drush.org
 pear install drush/drush
 
