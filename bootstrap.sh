@@ -163,7 +163,7 @@ echo "host    all             all             all            md5" >> /var/lib/pg
 # Add postgres bins to path
 printf 'export PATH=/usr/pgsql-9.3/bin:$PATH\n' >> ~/.bashrc
 # Allow external connections (pgadmin etc)
-echo "listen_addresses = '10.0.0.10,localhost'" >> /var/lib/pgsql/9.3/data/postgresql.conf
+echo "listen_addresses = '*'" >> /var/lib/pgsql/9.3/data/postgresql.conf
 
 # git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
