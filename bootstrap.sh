@@ -159,9 +159,11 @@ chkconfig postgresql-9.3 on
 # create a root user
 su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
-cat "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
+echo "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
 # Add postgres bins to path
 printf 'export PATH=/usr/pgsql-9.3/bin:$PATH\n' >> ~/.bashrc
+# Allow external connections (pgadmin etc)
+echo "listen_addresses = '*'" >> /var/lib/pgsql/9.3/data/postgresql.conf
 
 # git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
