@@ -112,17 +112,17 @@ cat > /etc/httpd/vhost.d/django.conf.example <<EOF
 </VirtualHost>
 EOF
 
+# install the IUS repo which has a bunch of updated packages in it
+wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-13.ius.el6.noarch.rpm
+rpm -Uvh ius-release*.rpm
+rm -f ius-release*.rpm
+
 # install PHP
 yum install -y php55u php55u-bcmath php55u-cli php55u-common php55u-gd php55u-intl php55u-ldap php55u-mbstring php55u-mcrypt php55u-mysql php55u-pdo php55u-pgsql php55u-xml
 # pear + drush
 yum install -y php55u-pear
 pear channel-discover pear.drush.org
 pear install drush/drush
-
-# install the IUS repo which has a bunch of updated packages in it
-wget http://dl.iuscommunity.org/pub/ius/stable/Redhat/6/x86_64/ius-release-1.0-13.ius.el6.noarch.rpm
-rpm -Uvh ius-release*.rpm
-rm -f ius-release*.rpm
 
 # the mysql-libs were downloaded for another package, so we need to remove them without removing dependencies
 rpm -e --nodeps mysql-libs
