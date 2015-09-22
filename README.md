@@ -3,7 +3,7 @@
 ## Batteries Included
 
 * MySQL 5.5 (username: root, no password)
-* Postgres 9.3 with PostGIS 2.1 (username: root, password: vagrant)
+* Postgres 9.4 with PostGIS 2.1 (username: root, password: vagrant)
 * RabbitMQ 3.1
 * Elasticsearch 1.2
 * Redis 2.8

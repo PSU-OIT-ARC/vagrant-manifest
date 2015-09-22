@@ -150,20 +150,20 @@ mysql -e "GRANT ALL ON *.* TO root@'192.168.%' IDENTIFIED BY '' WITH GRANT OPTIO
 
 # prepare for postgres
 sed -i -E 's#(\[(base|updates)\])#\1\nexclude=postgresql*#g'  /etc/yum.repos.d/CentOS-Base.repo
-yum -y localinstall http://yum.postgresql.org/9.3/redhat/rhel-6-x86_64/pgdg-centos93-9.3-1.noarch.rpm
-# install postgres93 with postgis
-yum install -y postgresql93 postgresql93-server postgresql93-libs postgresql93-contrib postgresql93-devel postgis2_93
-service postgresql-9.3 initdb
-service postgresql-9.3 start
-chkconfig postgresql-9.3 on
+yum -y localinstall http://yum.postgresql.org/9.4/redhat/rhel-6-x86_64/pgdg-centos94-9.4-1.noarch.rpm
+# install postgres94 with postgis
+yum install -y postgresql94 postgresql94-server postgresql94-libs postgresql94-contrib postgresql94-devel postgis2_94
+service postgresql-9.4 initdb
+service postgresql-9.4 start
+chkconfig postgresql-9.4 on
 # create a root user
 su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
-echo "host    all             all             all            md5" >> /var/lib/pgsql/9.3/data/pg_hba.conf
+echo "host    all             all             all            md5" >> /var/lib/pgsql/9.4/data/pg_hba.conf
 # Add postgres bins to path
-printf 'export PATH=/usr/pgsql-9.3/bin:$PATH\n' >> ~/.bashrc
+printf 'export PATH=/usr/pgsql-9.4/bin:$PATH\n' >> ~/.bashrc
 # Allow external connections (pgadmin etc)
-echo "listen_addresses = '*'" >> /var/lib/pgsql/9.3/data/postgresql.conf
+echo "listen_addresses = '*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 
 # git
 yum install -y curl-devel expat-devel gettext-devel openssl-devel zlib-devel perl-devel
