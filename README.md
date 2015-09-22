@@ -1,4 +1,4 @@
-# Provision a Centos 6.5 VM Vagrant box using Bash
+# Provision a Centos 6.5 VM Vagrant box
 
 ## Batteries Included
 
@@ -17,16 +17,16 @@
 
 ## Install
 
-Install Vagrant (1.6.5) and Virtual Box (4.2.12). If you run windows, run 
-`setx VAGRANT_HOME "c:\users\%username%\.vagrant.d"` from the cmd 
-command line. Clone this repo into a directory and run vagrant up:
+Install Vagrant (1.6.5) and Virtual Box (4.2.12). If you run windows, run `setx VAGRANT_HOME
+"c:\users\%username%\.vagrant.d"` from the cmd command line. Clone this repo into a directory and
+run `vagrant up`:
 
     git clone http://github.com/PSU-OIT-ARC/vagrant-manifest.git centos65
     cd centos65
     vagrant up
 
-The first time this is executed, a centos 6.5 image will be downloaded from a
-third party. Vagrant should then execute the bootstrap.sh provisioning script.
+The first time this is executed, a centos 6.5 image will be downloaded from a third party. Vagrant
+should then execute the bootstrap.sh provisioning script.
 
 If your box is not provisioned automatically, you can run:
 
@@ -34,7 +34,7 @@ If your box is not provisioned automatically, you can run:
 
 ## Login
 
-Once your VM is booted, you can login by SSH'ing into root@10.0.0.10 with a password of 'vagrant'
+Once your VM is booted, you can login by SSH'ing into root@10.0.0.10 with a password of 'vagrant'.
 
 ## Usage
 
@@ -45,14 +45,15 @@ To start the VM, cd into the directory where you cloned the git repo, then run:
 You can shutdown your VM by running:
 
     vagrant halt
-    
+
 both these commands need to be executed on the host machine, not the VM.
 
-The `/vagrant` directory on the VM maps to the directory on the host machine containing the git repo. This makes it easy to share files between the host and VM.
+The `/vagrant` directory on the VM maps to the directory on the host machine containing the git
+repo. This makes it easy to share files between the host and VM.
 
-## Troubleshoot
-If you run into the error of executing 'VBoxManage' when start up Vagrant box, run the command below to restart VBoxManager
+## Troubleshooting
+
+If you run into the error of executing 'VBoxManage' when starting a Vagrant box, run the command
+below to restart VBoxManager:
 
     sudo /Library/StartupItems/VirtualBox/VirtualBox restart
-
-
