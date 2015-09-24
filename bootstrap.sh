@@ -9,7 +9,7 @@ yum clean all
 yum -y update
 
 # some utils I like to have available
-yum install -y vim wget nc curl emacs words mlocate dos2unix
+yum install -y wget nc curl emacs words mlocate dos2unix
 
 # epel
 rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
@@ -255,25 +255,8 @@ sed -i "s/DIR 01;34/DIR 01;94/" /etc/DIR_COLORS
 # make the locate command work
 updatedb
 
-cp -r /vagrant/.vim* ~
-
 service httpd restart
 service mysqld restart
-
-# install vim 7.4
-yum -y --skip-broken groupinstall 'Development tools'
-yum -y install ncurses ncurses-devel
-cd /usr/local/src
-wget ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2
-tar -xjf vim-7.4.tar.bz2
-cd vim74
-./configure --prefix=/usr/local --with-features=huge --enable-rubyinterp --enable-pythoninterp
-make && make install
-
-# no one in their right mind wants to use the old vi
-echo "alias vi=vim" >> ~/.bashrc
-echo "export EDITOR=vim" >> ~/.bashrc
-git config --global core.editor vim
 
 # redirect all mail to root
 # http://www.euperia.com/development/how-to-configure-postfix-to-deliver-all-mail-to-one-mailbox/1132
@@ -287,5 +270,3 @@ echo "alias mail=alpine" >> ~/.bashrc
 # Lets make the vagrant user have the same dotfiles as root
 cp ~/.gitconfig /home/vagrant/.gitconfig
 cp ~/.bashrc /home/vagrant/.bashrc
-cp -r /vagrant/.vim* /home/vagrant
-chown -R vagrant:vagrant /home/vagrant/.vim
