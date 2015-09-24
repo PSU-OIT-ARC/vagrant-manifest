@@ -256,7 +256,3 @@ service mysqld restart
 echo '/^.*$/ root' > /etc/postfix/canonical-redirect
 echo "canonical_maps = regexp:/etc/postfix/canonical-redirect" > /etc/postfix/main.cf
 service postfix restart
-
-# Lets make the vagrant user have the same dotfiles as root
-cp ~/.gitconfig /home/vagrant/.gitconfig
-cp ~/.bashrc /home/vagrant/.bashrc
