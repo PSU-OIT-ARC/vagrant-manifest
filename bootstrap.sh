@@ -3,6 +3,10 @@ echo "options single-request-reopen" >> /etc/resolv.conf
 # lets us type hostnames like hera which expands to hera.rc.pdx.edu
 echo "search cic.pdx.edu research.pdx.edu rc.pdx.edu oit.pdx.edu pdx.edu" >> /etc/resolv.conf
 
+# Additional yum repos
+rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
+rpm -Uvh https://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-14.ius.centos6.noarch.rpm
+
 yum clean all
 
 # update yum
@@ -10,9 +14,6 @@ yum -y update
 
 # some utils I like to have available
 yum install -y wget nc curl emacs words mlocate dos2unix
-
-# epel
-rpm -Uvh https://dl.fedoraproject.org/pub/epel/epel-release-latest-6.noarch.rpm
 
 # set the hostname to some random list of words
 hostname=`shuf -n 2 /usr/share/dict/words | tr '\n' '.' | tr '[:upper:]' '[:lower:]' | tr -cd "[.a-z]" | sed "s/\.$//"`
@@ -109,9 +110,6 @@ cat > /etc/httpd/vhost.d/django.conf.example <<EOF
     </Directory>
 </VirtualHost>
 EOF
-
-# install the IUS repo which has a bunch of updated packages in it
-rpm -Uvh https://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-1.0-14.ius.centos6.noarch.rpm
 
 # install PHP
 yum install -y php55u php55u-bcmath php55u-cli php55u-common php55u-gd php55u-intl php55u-ldap php55u-mbstring php55u-mcrypt php55u-mysql php55u-pdo php55u-pgsql php55u-xml
