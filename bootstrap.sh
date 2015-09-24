@@ -29,7 +29,7 @@ chkconfig iptables off
 chkconfig ip6tables off
 
 # set the timezone to something reasonable
-ln -sf /usr/share/zoneinfo/US/Pacific /etc/localtime
+ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
 # install apache
 yum install -y httpd httpd-tools mod_ssl
