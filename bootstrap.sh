@@ -180,9 +180,10 @@ tar -zxf git-manpages-2.1.3.tar.gz -C /usr/local/share/man
 rm -f git-manpages-2.1.3.tar.gz
 
 
-# mod_wsgi
-yum install -y python33 python33-mod_wsgi
+# Python & mod_wsgi
+yum install -y python-devel python-virtualenv python33 python33-devel python33-setuptools
 echo "WSGISocketPrefix run/wsgi" >> /etc/httpd/conf.d/python33-mod_wsgi.conf
+
 
 # elasticsearch
 rpm --import http://packages.elasticsearch.org/GPG-KEY-elasticsearch
@@ -210,10 +211,6 @@ yum install -y openldap-clients openldap-devel
 # set the search base for ldap
 sed -i "s/#BASE.*/BASE dc=pdx,dc=edu/" /etc/openldap/ldap.conf
 sed -i "s@#URI.*@URI ldap://ldap-login.oit.pdx.edu@" /etc/openldap/ldap.conf
-
-
-# Python
-yum install -y python-devel python33-devel python33-setuptools python-virtualenv
 
 # image stuff
 yum install -y ImageMagick libjpeg-devel libpng-devel libtiff-devel
