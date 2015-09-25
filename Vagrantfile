@@ -11,7 +11,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "centos65"
-  
+
   # need a good amount of RAM to handle ES, Redis, Postgres, MySQL, RabbitMQ, etc
   config.vm.provider "virtualbox" do |v|
     v.memory = 1024
