@@ -151,12 +151,13 @@ yum install -y postgresql94 postgresql94-server postgresql94-libs postgresql94-c
 service postgresql-9.4 initdb
 service postgresql-9.4 start
 chkconfig postgresql-9.4 on
-# create a root user
-su -c "psql -c \"CREATE ROLE root WITH PASSWORD 'vagrant' SUPERUSER LOGIN;\"" postgres
 # allow md5 auth
 echo "host    all             all             all            md5" >> /var/lib/pgsql/9.4/data/pg_hba.conf
 # Add postgres bins to path
 printf 'export PATH=/usr/pgsql-9.4/bin:$PATH\n' >> ~/.bashrc
+# Create Postgres superusers
+sudo -u postgres /usr/pgsql-9.4/bin/createuser --createdb --createrole --login --superuser vagrant
+sudo -u postgres /usr/pgsql-9.4/bin/createuser --createdb --createrole --login --superuser root
 # Allow external connections (pgadmin etc)
 echo "listen_addresses = '*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 
