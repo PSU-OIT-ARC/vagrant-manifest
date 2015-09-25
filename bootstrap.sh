@@ -11,7 +11,7 @@ yum clean all
 yum -y update
 
 # some utils I like to have available
-yum install -y wget nc curl emacs words mlocate dos2unix
+yum install -y curl dos2unix emacs mlocate nc vim wget words
 
 # set the hostname to some random list of words
 hostname=`shuf -n 2 /usr/share/dict/words | tr '\n' '.' | tr '[:upper:]' '[:lower:]' | tr -cd "[.a-z]" | sed "s/\.$//"`
