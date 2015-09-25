@@ -13,6 +13,9 @@ yum -y update
 # some utils I like to have available
 yum install -y curl dos2unix emacs mlocate nc vim wget words
 
+# Install gcc et al for installations from source
+yum groupinstall -y "Development Tools"
+
 # set the hostname to some random list of words
 hostname=`shuf -n 2 /usr/share/dict/words | tr '\n' '.' | tr '[:upper:]' '[:lower:]' | tr -cd "[.a-z]" | sed "s/\.$//"`
 hostname $hostname
