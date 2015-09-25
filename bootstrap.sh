@@ -181,7 +181,8 @@ rm -f git-manpages-2.1.3.tar.gz
 
 
 # Python & mod_wsgi
-yum install -y python-devel python-virtualenv python33 python33-devel python33-setuptools
+yum install -y python-devel python-virtualenv
+yum install -y python33 python33-devel python33-setuptools python33-mod_wsgi
 echo "WSGISocketPrefix run/wsgi" >> /etc/httpd/conf.d/python33-mod_wsgi.conf
 
 
