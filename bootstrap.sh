@@ -10,8 +10,8 @@ rpm -Uvh https://dl.iuscommunity.org/pub/ius/stable/CentOS/6/x86_64/ius-release-
 yum clean all
 yum -y update
 
-# some utils I like to have available
-yum install -y curl dos2unix emacs mlocate nc vim wget words
+# Utilities
+yum install -y curl dos2unix emacs mlocate nc screen vim wget words
 
 # Install gcc et al for installations from source
 yum groupinstall -y "Development Tools"
