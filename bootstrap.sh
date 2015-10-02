@@ -217,7 +217,7 @@ sed -i "s@#URI.*@URI ldap://ldap-login.oit.pdx.edu@" /etc/openldap/ldap.conf
 yum install -y ImageMagick libjpeg-devel libpng-devel libtiff-devel
 
 # Redis
-adduser --base-dir /opt/ redis
+adduser --base-dir /opt redis
 su --login redis - <<EOF
     cd
     wget http://download.redis.io/releases/redis-2.8.17.tar.gz
