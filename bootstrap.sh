@@ -1,3 +1,8 @@
+# The user running `vagrant up` or `vagrant provision`, which SHOULD be
+# a regular user, gets passed through as the first command line arg.
+# IMPORTANT: This user should *not* be root or vagrant.
+VAGRANT_RUNNER="${1}"
+
 # this makes DNS lookups fast
 echo "options single-request-reopen" >> /etc/resolv.conf
 # lets us type hostnames like hera which expands to hera.rc.pdx.edu
@@ -24,6 +29,11 @@ sed -i "s/HOSTNAME=.*/HOSTNAME=$hostname/" /etc/sysconfig/network
 # set the root password to vagrant
 echo "vagrant" | sudo passwd --stdin root
 
+# Create a user and make this user a sudoer.
+adduser -m -s /bin/bash $VAGRANT_RUNNER
+echo -n "vagrant" | passwd --stdin $VAGRANT_RUNNER
+echo "%${VAGRANT_RUNNER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${VAGRANT_RUNNER}
+
 # kill iptables
 service ip6tables stop
 service iptables stop
@@ -36,6 +46,9 @@ ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 # Install apache and make sure it starts when this machine boots
 yum install -y httpd httpd-tools mod_ssl
 chkconfig --levels 235 httpd on
+
+# The apache group is used like a resgrp
+usermod -a -G apache $VAGRANT_RUNNER
 
 # customize apache a bit
 sed -i "s/#ExtendedStatus On/ExtendedStatus On/" /etc/httpd/conf/httpd.conf

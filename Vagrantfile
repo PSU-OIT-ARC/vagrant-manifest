@@ -1,13 +1,25 @@
 # -*- mode: ruby -*-
 # vi: set ft=ruby :
+require 'etc'
 
 # Vagrantfile API/syntax version. Don't touch unless you know what you're doing!
 VAGRANTFILE_API_VERSION = "2"
+VAGRANT_COMMAND = ARGV[0]
+
+# Set this to your Odin username if the guessed value is wrong
+CURRENT_USER = Etc.getpwuid(Process.uid).name
+
+if CURRENT_USER == "root" || CURRENT_USER == "vagrant"
+    abort "vagrant commands should be run as a regular user, not root or vagrant"
+end
 
 Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # All Vagrant configuration is done here. The most common configuration
   # options are documented and commented below. For a complete reference,
   # please see the online documentation at vagrantup.com.
+  if VAGRANT_COMMAND == "ssh"
+      config.ssh.username = CURRENT_USER
+  end
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "boxcutter/centos67"
@@ -39,9 +51,8 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Default value: false
   # config.ssh.forward_agent = true
 
-  # Provisioning by shell, to set timezone to PDT
-  config.vm.provision :shell,
-    :path => "bootstrap.sh"
+  # Provisioning by shell
+  config.vm.provision :shell, :path => "bootstrap.sh", :args => [CURRENT_USER]
 
   # Share an additional folder to the guest VM. The first argument is
   # the path on the host to the actual folder. The second argument is
