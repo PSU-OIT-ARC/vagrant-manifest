@@ -33,10 +33,8 @@ chkconfig ip6tables off
 # set the timezone to something reasonable
 ln -sf /usr/share/zoneinfo/America/Los_Angeles /etc/localtime
 
-# install apache
+# Install apache and make sure it starts when this machine boots
 yum install -y httpd httpd-tools mod_ssl
-service httpd restart
-# make sure it starts when this machine boots
 chkconfig --levels 235 httpd on
 
 # customize apache a bit
