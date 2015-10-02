@@ -50,6 +50,12 @@ chkconfig --levels 235 httpd on
 # The apache group is used like a resgrp
 usermod -a -G apache $VAGRANT_RUNNER
 
+# Create deployment directories; this is useful if you want to deploy
+# from your local machine to the Vagrant instance similar to how regular
+# deployments are done.
+mkdir -p /vol/www
+chown /vol/www vagrant:apache
+
 # customize apache a bit
 sed -i "s/#ExtendedStatus On/ExtendedStatus On/" /etc/httpd/conf/httpd.conf
 sed -i "s/#ServerName .*/ServerName $hostname/" /etc/httpd/conf/httpd.conf
