@@ -31,7 +31,7 @@ echo "vagrant" | sudo passwd --stdin root
 
 # Create a user and make this user a sudoer.
 adduser -m -s /bin/bash $VAGRANT_RUNNER
-echo -n "vagrant" | passwd --stdin $VAGRANT_RUNNER
+echo "vagrant" | passwd --stdin $VAGRANT_RUNNER
 echo "%${VAGRANT_RUNNER} ALL=(ALL) NOPASSWD: ALL" >> /etc/sudoers.d/${VAGRANT_RUNNER}
 
 # kill iptables
