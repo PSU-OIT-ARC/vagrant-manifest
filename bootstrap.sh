@@ -175,6 +175,7 @@ printf 'export PATH=/usr/pgsql-9.4/bin:$PATH\n' >> ~/.bashrc
 # Create Postgres superusers
 sudo -u postgres /usr/pgsql-9.4/bin/createuser --createdb --createrole --login --superuser vagrant
 sudo -u postgres /usr/pgsql-9.4/bin/createuser --createdb --createrole --login --superuser root
+sudo -u postgres /usr/pgsql-9.4/bin/createuser --createdb --createrole --login --superuser $VAGRANT_RUNNER
 # Allow external connections (pgadmin etc)
 echo "listen_addresses = '*'" >> /var/lib/pgsql/9.4/data/postgresql.conf
 
